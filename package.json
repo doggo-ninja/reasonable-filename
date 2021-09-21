@@ -17,9 +17,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "prepare": "tsdx build"
   },
   "peerDependencies": {},
   "husky": {
@@ -37,16 +35,6 @@
   "name": "reasonable-filename",
   "author": "Kognise",
   "module": "dist/reasonable-filename.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/reasonable-filename.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/reasonable-filename.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
     "husky": "^7.0.2",
     "tsdx": "^0.14.1",
