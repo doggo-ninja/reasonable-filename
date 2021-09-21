@@ -36,7 +36,7 @@ This package gets as close as we can. You should not fully trust it for security
 - Supports some checks `valid-filename` doesn't, for example, Windows reserved keywords with extensions
 - Clearly specifies that results aren't a guarantee that filenames are valid, which is positive from a security standpoint
 - As a potential downside, this package doesn't expose regexes which can be used for replacing characters in the string to coerce invalid names into validity
-- Has 28 unit tests based on actual filesystem testing
+- Has 31 unit tests based on actual filesystem testing
 
 ## Contributions
 

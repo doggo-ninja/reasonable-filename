@@ -2,6 +2,7 @@ import isReasonableFilename from '../src'
 
 describe('invalid cases', () => {
 	it('"CON" is invalid', () => expect(isReasonableFilename('CON')).toBeFalsy())
+	it('"COM1" is invalid', () => expect(isReasonableFilename('COM1')).toBeFalsy())
 	it('"cON" is invalid', () => expect(isReasonableFilename('cON')).toBeFalsy())
 	it('"con.txt" is invalid', () =>
 		expect(isReasonableFilename('con.txt')).toBeFalsy())
@@ -47,6 +48,8 @@ describe('valid cases', () => {
 	it('"bar.txt" is valid', () =>
 		expect(isReasonableFilename('bar.txt')).toBeTruthy())
 	it('"conx" is valid', () => expect(isReasonableFilename('conx')).toBeTruthy())
+	it('"COM0" is valid', () => expect(isReasonableFilename('CON0')).toBeTruthy())
+	it('"LPT0" is valid', () => expect(isReasonableFilename('LPT0')).toBeTruthy())
 	it('x 255 times is valid', () =>
 		expect(isReasonableFilename('a'.repeat(255))).toBeTruthy())
 })
