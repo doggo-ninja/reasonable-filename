@@ -14,6 +14,11 @@ import isReasonableFilename from 'reasonable-filename'
 
 console.log(isReasonableFilename('file.c')) // true
 console.log(isReasonableFilename('LPT2.tar.gz')) // false
+
+// If you want to access the regex directly...
+// This won't check the length.
+import { unreasonableFilenameRegex } from 'reasonable-filename'
+console.log(!unreasonableFilenameRegex.test('file.c')) // true
 ```
 
 Rules it takes into account:
