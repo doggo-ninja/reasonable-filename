@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "description": "Validate file and folder names a reasonable amount",
+  "repository": "doggo-ninja/reasonable-filename",
   "files": [
     "dist",
     "src"
