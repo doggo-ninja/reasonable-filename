@@ -2,7 +2,8 @@ import isReasonableFilename from '../src'
 
 describe('invalid cases', () => {
 	it('"CON" is invalid', () => expect(isReasonableFilename('CON')).toBeFalsy())
-	it('"COM1" is invalid', () => expect(isReasonableFilename('COM1')).toBeFalsy())
+	it('"COM1" is invalid', () =>
+		expect(isReasonableFilename('COM1')).toBeFalsy())
 	it('"cON" is invalid', () => expect(isReasonableFilename('cON')).toBeFalsy())
 	it('"con.txt" is invalid', () =>
 		expect(isReasonableFilename('con.txt')).toBeFalsy())
