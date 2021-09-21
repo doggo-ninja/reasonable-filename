@@ -3,7 +3,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "description": "Validate file and folder names a reasonable amount",
+  "description": "Reasonably validate file and folder names",
   "repository": "doggo-ninja/reasonable-filename",
   "files": [
     "dist",
