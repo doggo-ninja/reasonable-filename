@@ -1,54 +1,59 @@
-# Reasonable Filename
+<div align='center'>
+<h1>Reasonable Filename</h1>
+by <a href='https://kognise.dev/' target='_blank'>@kognise</a>
+</div>
 
-A simple JavaScript utility to reasonably validate file and folder names.
+---
+
+A simple JavaScript/TypeScript utility to reasonably validate file and folder names.
 
 ```bash
 # NPM
 npm install reasonable-filename
 # Yarn
 yarn add reasonable-filename
+# Bun???
+bun add reasonable-filename
 ```
 
 ```ts
 import isReasonableFilename from 'reasonable-filename'
 
 console.log(isReasonableFilename('file.c')) // true
-console.log(isReasonableFilename('LPT2.tar.gz')) // false
+console.log(isReasonableFilename('LPT2.tar.gz')) // false (invalid on Windows)
 
 // If you want to access the regex directly...
-// This won't check the length.
+// This doesn't do length checks.
 import { unreasonableFilenameRegex } from 'reasonable-filename'
 console.log(!unreasonableFilenameRegex.test('file.c')) // true
 ```
 
-Rules it takes into account:
+## How is this better than [`valid-filename`](https://www.npmjs.com/package/valid-filename) by sindresorhus?
+
+- Checks for things `valid-filename` doesn't, for example, Windows reserved keywords with extensions
+- Does not incorrectly disallow `COM0` and `LPT0`
+- Clearly specifies exactly what guarantees it provides in the README
+- Has 31 unit tests based on actual results across platforms and filesystems
+
+Sure, this is less popular, but even if I die and stop providing support, `reasonable-filename` is small enough that you can easily copy it into your project.
+
+I love you sindresorhus!
+
+## Rules
 
 - Cannot end with `.` (this also rules out `.` and `..` as names)
 - Cannot start or end with whitespace
 - Cannot contain `\/:*?"<>|`
 - Cannot contain non-printable characters (U+0000 to U+001F)
-- The portion before the first `.`, with trailing whitespace trimmed, cannot case-insensitvely match a Windows reserved keyword (for example, `CON`)
+- The portion before the first `.`, with trailing whitespace trimmed, cannot case-insensitively match a Windows reserved keyword such as `CON` and `LPT2`
 - Must be 255 characters or fewer, and at least 1 character
 
 ## Why only reasonable?
 
-Filenames are super weird. Different platforms have varying levels of requirements, with Windows having the strictest collection. Windows in particular has a bunch of odd-seeming rules which are mostly for backwards compatibility. As such, it's almost impossible to perfectly test for filename compatibility on every platform.
+Filenames are super weird. Different platforms have different requirements, with Windows being the strictest. Windows in particular is a backwards compatibilty behemoth with a lot of strange reserved names. As such, it's impossible to create a perfect test of filename compatibility on every platform.
 
-This package gets as close as we can. You should not fully trust it for security guarantees, but it will help validate most cases.
-
-## Comparison to [`valid-filename`](https://www.npmjs.com/package/valid-filename)
-
-**Pros**
-
-- Supports some checks `valid-filename` doesn't, for example, Windows reserved keywords with extensions
-- Clearly specifies that results aren't a guarantee as to a validity, which is a positive from a security standpoint
-- `valid-filename` incorrectly disallows `COM0` and `LPT0`, this package doesn't have that problem
-- Has 31 unit tests based on actual filesystem testing
-
-**Cons**
-
-- This package doesn't expose granular regexes which can be used for coercing invalid names into validity
+This package gets as close as I can. It can't provide any security guarantees beyond what is specified under Rules above, but but it will help validate most cases.
 
 ## Contributions
 
-Spot a rule we're missing or a mistake in the current ruleset? Feel free to submit a PR or issue! We have a commitment to reviewing in less than 24 hours from issue or pull request submission.
+Spot a rule we're missing or a mistake in the current ruleset? Feel free to submit a PR or issue! I will review everything in less than 24 hours from issue or pull request submission.
