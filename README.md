@@ -45,7 +45,8 @@ I love you sindresorhus!
 - Cannot start or end with whitespace
 - Cannot contain `\/:*?"<>|`
 - Cannot contain non-printable characters (U+0000 to U+001F)
-- The portion before the first `.`, with trailing whitespace trimmed, cannot case-insensitively match a Windows reserved keyword such as `CON` and `LPT2`
+- The portion before the first `.`, with trailing whitespace trimmed, cannot case-insensitively match a Windows reserved keyword
+  - `CON`, `PRN`, `AUX`, `NUL`, `COM1`, `COM2`, `COM3`, `COM4`, `COM5`, `COM6`, `COM7`, `COM8`, `COM9`, `LPT1`, `LPT2`, `LPT3`, `LPT4`, `LPT5`, `LPT6`, `LPT7`, `LPT8`, `LPT9`
 - Must be 255 characters or fewer, and at least 1 character
 
 ## Why only reasonable?
